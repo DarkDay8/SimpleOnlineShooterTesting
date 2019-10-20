@@ -40,9 +40,20 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Player player)
     {
-        Debug.Log("Player entered in the room:" + newPlayer.ActorNumber);
+        Debug.Log("Player entered in the room:" + player.ActorNumber);
+        playerListEntries.Add(player.ActorNumber, SwawnController.Instance.InstantiatePlayer());
+    }
+
+    public override void OnPlayerLeftRoom(Player player)
+    {
+        Debug.Log("Player leaved the room:" + player.ActorNumber);
+        GameObject destoyplayer;
+        playerListEntries.TryGetValue(player.ActorNumber, out destoyplayer);
+        SwawnController.Instance.DestroyPlayer(destoyplayer);
+        playerListEntries.Remove(player.ActorNumber);
+
     }
 
 }
