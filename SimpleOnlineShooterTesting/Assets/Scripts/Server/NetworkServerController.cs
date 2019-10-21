@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+
 public class NetworkServerController : MonoBehaviourPunCallbacks
 {
     private Dictionary<int, GameObject> playerListEntries;
@@ -19,6 +20,8 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
     {
 
     }
+
+
     public override void OnConnectedToMaster()
     {
         Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
@@ -54,6 +57,12 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
         SwawnController.Instance.DestroyPlayer(destoyplayer);
         playerListEntries.Remove(player.ActorNumber);
 
+    }
+    public GameObject getPlayer(int key)
+    {
+        GameObject player;
+        playerListEntries.TryGetValue(key, out player);
+        return player;
     }
 
 }
