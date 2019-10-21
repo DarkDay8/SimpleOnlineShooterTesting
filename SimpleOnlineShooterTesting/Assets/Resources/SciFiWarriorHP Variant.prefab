@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 9046392549367133462}
   - {fileID: 8379186465657476046}
   - {fileID: 4314892069105012925}
+  - {fileID: 9182958889869003522}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -107,6 +108,20 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &9182958889869003522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395393896036035689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca7985aede2abe4bb04e18bdfadc1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActorNumber: 0
+  Hp: 0
 --- !u!1001 &6397169945554218051
 PrefabInstance:
   m_ObjectHideFlags: 0

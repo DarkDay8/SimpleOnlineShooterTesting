@@ -46,7 +46,9 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player player)
     {
         Debug.Log("Player entered in the room:" + player.ActorNumber);
-        playerListEntries.Add(player.ActorNumber, SwawnController.Instance.InstantiatePlayer());
+        GameObject pl = SwawnController.Instance.InstantiatePlayer();
+        pl.GetComponent<PlayerStatus>().ActorNumber =  player.ActorNumber;
+        playerListEntries.Add(player.ActorNumber, pl);
     }
 
     public override void OnPlayerLeftRoom(Player player)
