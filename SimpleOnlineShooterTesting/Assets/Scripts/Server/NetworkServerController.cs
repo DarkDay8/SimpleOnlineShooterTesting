@@ -14,7 +14,7 @@ public class MyPlayer
 
 public class NetworkServerController : MonoBehaviourPunCallbacks
 {
-    public delegate GameObject SpawnPlayer();
+    public delegate MyPlayer SpawnPlayer(string id);
     public SpawnPlayer spawnPlayer;
     private Dictionary<string, MyPlayer> playerListEntries;
 
@@ -55,14 +55,7 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player player)
     {
         Debug.Log("Player entered in the room:" + player.UserId);
-        GameObject pl = spawnPlayer();
-        MyPlayer myPlayer = new MyPlayer();
-
-        myPlayer.playerStatus = pl.GetComponent<PlayerStatus>();
-        myPlayer.transform = pl.transform;
-        myPlayer.playerStatus.SetUsedId(player.UserId);
-        myPlayer.playerStatus.Weapon = new Launcher("Launcher1");
-        playerListEntries.Add(player.UserId, myPlayer);
+        playerListEntries.Add(player.UserId, spawnPlayer(player.UserId));
         object[] content = new object[] { player.UserId };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
         SendOptions sendOptions = new SendOptions { Reliability = true, };
