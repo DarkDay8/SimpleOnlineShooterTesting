@@ -69,3 +69,5 @@ MonoBehaviour:
   UserId: 
   Horizontal: 0
   Vertical: 0
+  RotAroundX: 0
+  RotAroundY: 0

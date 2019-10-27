@@ -10,6 +10,10 @@ public class PlayerControlStatus : MonoBehaviourPun, IPunObservable
     public float Horizontal;
     [SerializeField]
     public float Vertical;
+    [SerializeField]
+    public float RotAroundX;
+    [SerializeField]
+    public float RotAroundY;
 
     public void SetUsedId(string id)
     {
@@ -27,12 +31,16 @@ public class PlayerControlStatus : MonoBehaviourPun, IPunObservable
             stream.SendNext(this.UserId);
             stream.SendNext(this.Horizontal);
             stream.SendNext(this.Vertical);
+            stream.SendNext(this.RotAroundX);
+            stream.SendNext(this.RotAroundY);
         }
         else
         {
             this.UserId = (string)stream.ReceiveNext();
             this.Horizontal = (float)stream.ReceiveNext();
             this.Vertical = (float)stream.ReceiveNext();
+            this.RotAroundX = (float)stream.ReceiveNext();
+            this.RotAroundY = (float)stream.ReceiveNext();
         }
     }
 

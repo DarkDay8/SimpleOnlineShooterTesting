@@ -24,11 +24,11 @@ public class MoveController : MonoBehaviourPunCallbacks
 
     public void MovePlayer(MyPlayer player, float interval)
     {
-        Vector3 velosity = player.controlStatus == null ? Vector3.zero : 
-            new Vector3(player.controlStatus.Horizontal, 0, player.controlStatus.Vertical);
-
-        Debug.Log("speed: " + velosity * interval * speed);
-        Debug.Log("OWNER: "+ PhotonNetwork.LocalPlayer.ActorNumber);
-        player.transform.Translate(velosity * interval * speed);
+        if (player.controlStatus != null)
+        {
+            Vector3 velosity = new Vector3(player.controlStatus.Horizontal, 0, player.controlStatus.Vertical);
+            player.transform.Translate(velosity * interval * speed);
+            player.transform.rotation = Quaternion.Euler(0, player.controlStatus.RotAroundY, 0);
+        }
     }
 }

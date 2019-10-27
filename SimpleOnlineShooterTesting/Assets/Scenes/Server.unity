@@ -2368,4 +2368,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   network: {fileID: 1771358741}
-  speed: 2
+  speed: 5
