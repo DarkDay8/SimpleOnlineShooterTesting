@@ -1,16 +1,16 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class Bow : BaseWeapon
+public class Launcher : BaseWeapon
 {
-    private string  bulletName = "Arrow";
+    private string bulletName = "Grenade";
 
-    public Bow(string id) : base(id)
+    public Launcher(string id) : base(id)
     {
-        Title = "Bow";
-        reload = 3;
+        Title = "Launcher";
+        reload = 7;
     }
 
     public override void Fire(Vector3 position, Quaternion rotation)

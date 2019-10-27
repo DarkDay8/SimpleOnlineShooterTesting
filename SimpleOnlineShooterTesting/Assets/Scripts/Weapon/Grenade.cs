@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviourPun
+public class Grenade : MonoBehaviourPun
 {
     [SerializeField]
     private float speed;
     [SerializeField]
     private float timeToLife;
     private Rigidbody rb;
+    private string explosionName = "Explosion";
 
     public void Start()
     {
@@ -19,22 +20,20 @@ public class Arrow : MonoBehaviourPun
     }
     private void FixedUpdate()
     {
-        if (rb.velocity != Vector3.zero)
-            rb.rotation = Quaternion.LookRotation(rb.velocity);
         if (timeToLife > 0)
             timeToLife -= Time.fixedDeltaTime;
         else
-            PhotonNetwork.Destroy(this.gameObject);
+            Detonation();
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision ArrowDestroy");
-        PhotonNetwork.Destroy(this.gameObject);
-    }
+
     private void OnTriggerEnter(Collider other)
     {
+        Detonation();
+    }
 
-        Debug.Log("Trigger ArrowDestroy");
+    private void Detonation()
+    {
+        PhotonNetwork.Instantiate(explosionName, transform.position, Quaternion.identity);
         PhotonNetwork.Destroy(this.gameObject);
     }
 }
