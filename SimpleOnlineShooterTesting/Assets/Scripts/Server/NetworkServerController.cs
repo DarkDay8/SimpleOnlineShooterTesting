@@ -7,6 +7,10 @@ using ExitGames.Client.Photon;
 
 public class MyPlayer
 {
+    public delegate void ReSpawn(MyPlayer player);
+    public ReSpawn reSpawnPlayer;
+    public string id;
+
     public Transform transform;
     public PlayerStatus playerStatus;
     public PlayerControlStatus controlStatus;

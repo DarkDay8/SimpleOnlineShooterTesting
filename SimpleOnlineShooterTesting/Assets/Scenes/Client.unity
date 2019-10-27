@@ -2210,7 +2210,6 @@ GameObject:
   - component: {fileID: 1771358743}
   - component: {fileID: 1771358744}
   - component: {fileID: 1771358745}
-  - component: {fileID: 1771358746}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -2273,6 +2272,7 @@ MonoBehaviour:
   XMaxRotation: 60
   Xsensitivity: 1
   Ysensitivity: 1
+  CameraUp: 2
 --- !u!114 &1771358745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,14 +2290,6 @@ MonoBehaviour:
   buttonController: {fileID: 1771358743}
   networkController: {fileID: 1771358741}
   cameraController: {fileID: 1771358744}
---- !u!81 &1771358746
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771358740}
-  m_Enabled: 1
 --- !u!1 &1848758979
 GameObject:
   m_ObjectHideFlags: 0

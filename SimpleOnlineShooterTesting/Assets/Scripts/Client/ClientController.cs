@@ -26,23 +26,47 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-        Debug.Log("Event" + photonEvent.Code);
-        byte code = photonEvent.Code;
-        switch (code)
+        try
         {
-            case (byte)GameEvent.InstPlayer:
-                object[] data = (object[])photonEvent.CustomData;
-                if (((string)data[0]).Equals(PhotonNetwork.LocalPlayer.UserId))
-                    Invoke("BaseInst", 0.1f);
-                break;
-            default:
-                break;
+            object[] data = (object[])photonEvent.CustomData;
+            byte code = photonEvent.Code;
+            switch (code)
+            {
+                case (byte)GameEvent.InstPlayer:
+                    if (((string)data[0]).Equals(PhotonNetwork.LocalPlayer.UserId))
+                        Invoke("BaseInst", 0.1f);
+                    break;
+                case (byte)GameEvent.ReSpawn:
+                    if (((string)data[0]).Equals(PhotonNetwork.LocalPlayer.UserId))
+                        Invoke("ReSpawn", 0.1f);
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Data " + photonEvent.CustomData);
+            Debug.Log("Code " + photonEvent.Code);
         }
     }
+    private void ReSpawn()
+    {
+        PlayerStatus[] players = GameObject.FindObjectsOfType<PlayerStatus>();
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].IsMine(PhotonNetwork.LocalPlayer.UserId))
+            {
+                cameraController.SetCamera(players[i]);
+                return;
+            }
+        }
+    }
+
     private void BaseInst()
     {
         PlayerStatus[] players = GameObject.FindObjectsOfType<PlayerStatus>();
-        Debug.Log(players.Length); 
+        //Debug.Log(players.Length); 
         for (int i = 0; i < players.Length; i++)
         {      
             if (players[i].IsMine(PhotonNetwork.LocalPlayer.UserId))

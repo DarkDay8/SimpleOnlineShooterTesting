@@ -23,7 +23,7 @@ public class MoveController : MonoBehaviourPunCallbacks
 
     public void MovePlayer(MyPlayer player, float interval)
     {
-        if (player.controlStatus != null)
+        if (player.controlStatus != null && player.transform != null)
         {
             Vector3 velosity = new Vector3(player.controlStatus.Horizontal, 0, player.controlStatus.Vertical);
             player.transform.Translate(velosity * interval * speed);

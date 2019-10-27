@@ -2936,6 +2936,7 @@ MonoBehaviour:
   - {fileID: 405962450}
   - {fileID: 548914442}
   - {fileID: 1705839473}
+  respawnTime: 2
 --- !u!114 &1771358744
 MonoBehaviour:
   m_ObjectHideFlags: 0

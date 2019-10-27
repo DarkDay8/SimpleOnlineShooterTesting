@@ -17,9 +17,12 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     [Range(1.0f, 10.0f)]
     private float Ysensitivity;
-
+    [SerializeField]
+    [Range(1.0f, 10.0f)]
+    private float CameraUp;
     private float rotAroundX;
     private float rotAroundY;
+    Transform playerTransform;
 
 
     // Start is called before the first frame update
@@ -38,13 +41,14 @@ public class CameraController : MonoBehaviour
         // Clamp rotation values
         rotAroundX = Mathf.Clamp(rotAroundX, XMinRotation, XMaxRotation);
 
-        camera.transform.rotation = Quaternion.Euler(-rotAroundX, rotAroundY, 0); // rotation of Camera
+        camera.transform.rotation = Quaternion.Euler(-rotAroundX, rotAroundY, 0);
+        if (playerTransform != null)
+            camera.transform.position = playerTransform.position + Vector3.up * CameraUp;
     }
 
     public void SetCamera(PlayerStatus player)
     {
-        Debug.Log("SetCamera");
-        camera.transform.SetParent(player.transform);
+        playerTransform = player.transform;
         camera.transform.localPosition = new Vector3(0, 2, 0);
     }
 

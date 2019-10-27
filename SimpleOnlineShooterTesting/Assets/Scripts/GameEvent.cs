@@ -5,5 +5,6 @@
     Died,
     ChangeWeapon,
     InstPlayer,
-    InstControl
+    InstControl,
+    ReSpawn
 }

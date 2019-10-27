@@ -16,7 +16,7 @@ public class WeaponController : MonoBehaviourPun
         {
             foreach (var item in network.GetPlayers())
             {
-                if (item.Value.playerStatus.Reload > 0)
+                if (item.Value.playerStatus?.Reload > 0)
                     item.Value.playerStatus.Reload -= Time.fixedDeltaTime;
                 else if (item.Value.controlStatus?.Fire1 > 0)
                     Fire(item.Value);
