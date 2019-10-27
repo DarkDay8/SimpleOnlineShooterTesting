@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class EventController : MonoBehaviourPunCallbacks, IOnEventCallback
+public class ServerController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
 
     public void OnEvent(EventData eventData)
@@ -14,25 +14,14 @@ public class EventController : MonoBehaviourPunCallbacks, IOnEventCallback
         byte code = eventData.Code;
         switch (code)
         {
-            case (byte)GameEvent.Moving:
-                Debug.Log("Moving");
+            case (byte)GameEvent.InstControl:
+                Debug.Log("InstControl");
                 object[] data = (object[])eventData.CustomData;
-                MoveController.Instanse.MovePlayer(eventData.Sender, (float)data[0], (float)data[1], (float)data[2]);
+                //MoveController.Instanse.MovePlayer(eventData., (float)data[0], (float)data[1], (float)data[2]);
                 break;
             default:
                 break;
         }
-
     }
-    public void OnEnable()
-    {
-        PhotonNetwork.AddCallbackTarget(this);
-    }
-
-    public void OnDisable()
-    {
-        PhotonNetwork.RemoveCallbackTarget(this);
-    }
-
 
 }

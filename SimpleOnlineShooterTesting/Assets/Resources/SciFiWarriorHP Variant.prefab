@@ -27,7 +27,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.8
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -67,32 +67,15 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 9046392549367133462}
-  - {fileID: 8379186465657476046}
   - {fileID: 4314892069105012925}
   - {fileID: 9182958889869003522}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8379186465657476046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6395393896036035689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &9046392549367133462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca7985aede2abe4bb04e18bdfadc1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActorNumber: 0
+  UserId: 
   Hp: 0
 --- !u!1001 &6397169945554218051
 PrefabInstance:

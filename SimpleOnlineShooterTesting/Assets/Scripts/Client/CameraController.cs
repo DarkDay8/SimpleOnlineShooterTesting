@@ -7,29 +7,23 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     GameObject camera;
-    bool isSet;
 
     // Start is called before the first frame update
     void Start()
     {
-        isSet = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isSet)
-        {
-            PlayerStatus[] players = GameObject.FindObjectsOfType<PlayerStatus>();
-            foreach (PlayerStatus item in players)
-            {
-                if(item.IsMine(PhotonNetwork.LocalPlayer.ActorNumber))
-                {
-                    camera.transform.SetParent(item.transform);
-                    camera.transform.localPosition = new Vector3(0, 2, 0);
-                    isSet = true;
-                }
-            }
-        }
+
+    }
+
+    public void SetCamera(PlayerStatus player)
+    {
+        Debug.Log("SetCamera");
+        camera.transform.SetParent(player.transform);
+        camera.transform.localPosition = new Vector3(0, 2, 0);
     }
 }

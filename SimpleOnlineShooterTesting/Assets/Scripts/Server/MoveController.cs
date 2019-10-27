@@ -1,32 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MoveController : MonoBehaviour
+public class MoveController : MonoBehaviourPunCallbacks
 {
-    public static MoveController Instanse;
-
     [SerializeField]
     private NetworkServerController network;
     [SerializeField]
     private float speed;
+    private List<PlayerControlStatus> controlStatuses;
 
-    private void Awake()
+    private void FixedUpdate()
     {
-        Instanse = this;
+        if (network.NotNullPlayer())
+        {
+            foreach (var item in network.GetPlayers())
+            {
+                MovePlayer(item.Value, Time.fixedDeltaTime);
+            }
+        }
     }
 
-    public void MovePlayer(int sender, PlayerAxes playerAxes)
+    public void MovePlayer(MyPlayer player, float interval)
     {
-        Vector3 velosity = new Vector3(playerAxes.Horizontal, playerAxes.Vertical, 0);
-        GameObject player = network.getPlayer(sender);
-        player.transform.Translate(velosity * speed);
-    }
-    public void MovePlayer(int sender, float horizontal, float vertical, float interval)
-    {
-        Debug.Log("horizontal " + horizontal + " vertical " + vertical + "interval " + interval);
-        Vector3 velosity = new Vector3(horizontal, 0, vertical);
-        GameObject player = network.getPlayer(sender);
+        Vector3 velosity = player.controlStatus == null ? Vector3.zero : 
+            new Vector3(player.controlStatus.Horizontal, 0, player.controlStatus.Vertical);
+
+        Debug.Log("speed: " + velosity * interval * speed);
+        Debug.Log("OWNER: "+ PhotonNetwork.LocalPlayer.ActorNumber);
         player.transform.Translate(velosity * interval * speed);
     }
 }

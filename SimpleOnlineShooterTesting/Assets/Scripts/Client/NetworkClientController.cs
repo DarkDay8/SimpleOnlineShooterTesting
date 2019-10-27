@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class NetworkClientController : MonoBehaviourPunCallbacks
 {
+    public int ActorNumber { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        ActorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
     }
 
     // Update is called once per frame
@@ -22,10 +24,7 @@ public class NetworkClientController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
 
-    public override void OnJoinedRoom()
-    {
 
-    }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {

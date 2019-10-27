@@ -6,34 +6,71 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
 {
 
     [SerializeField]
-    public int ActorNumber;
+    string UserId;
     [SerializeField]
-    public float Hp;
+    float Hp;
+    //[SerializeField]
+    //float Horizontal;
+    //[SerializeField]
+    //float Vertical;
 
-    void SetActor(int actor)
+    public void SetUsedId(string id)
     {
-        ActorNumber = actor;
+        if(PhotonNetwork.IsMasterClient)
+            UserId = id;
     }
+    //public void SetHorizontal(string id, float value)
+    //{
+    //   // if (UserId.Equals(id))
+    //        Horizontal = value;
+    //}
+    //public void SetVertical(string id, float value)
+    //{
+    //   // if (UserId.Equals(id))
+    //        Vertical = value;
+    //}
 
-    public bool IsMine(int localActor)
+
+    public bool IsMine(string id)
     {
-        return localActor == ActorNumber;
+        return UserId.Equals(id);
     }
-
-
+    //public void SetBodyPosition(float horizontal, float vertical)
+    //{
+    //    if (UserId == PhotonNetwork.LocalPlayer.UserId)
+    //    {
+    //        Horizontal = horizontal;
+    //        Vertical = vertical;
+    //    }
+    //}
+    //public float GetHorizontal()
+    //{
+    //    //return PhotonNetwork.IsMasterClient ? Horizontal : 0;
+    //    return Horizontal;
+    //}
+    //public float GetVertical()
+    //{
+    //    //return PhotonNetwork.IsMasterClient ? Vertical : 0;
+    //    return Vertical;
+    //}
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             // We own this player: send the others our data
-            stream.SendNext(this.ActorNumber);
+            stream.SendNext(this.UserId);
             stream.SendNext(this.Hp);
+            //stream.SendNext(this.Horizontal);
+            //stream.SendNext(this.Vertical);
+
         }
         else
         {
             // Network player, receive data
-            this.ActorNumber = (int)stream.ReceiveNext();
+            this.UserId = (string)stream.ReceiveNext();
             this.Hp = (float)stream.ReceiveNext();
+            //this.Horizontal = (float)stream.ReceiveNext();
+            //this.Vertical = (float)stream.ReceiveNext();
         }
     }
 

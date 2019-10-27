@@ -3,5 +3,7 @@
     Moving = 1,
     Fire,
     Died,
-    ChangeWeapon
+    ChangeWeapon,
+    InstPlayer,
+    InstControl
 }
