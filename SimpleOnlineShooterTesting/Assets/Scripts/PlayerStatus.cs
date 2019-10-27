@@ -9,10 +9,11 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
     string UserId;
     [SerializeField]
     float Hp;
-    //[SerializeField]
-    //float Horizontal;
+    [SerializeField]
+    public BaseWeapon Weapon;
     //[SerializeField]
     //float Vertical;
+    public float Reload { set; get; }
 
     public void SetUsedId(string id)
     {
@@ -60,7 +61,6 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
             // We own this player: send the others our data
             stream.SendNext(this.UserId);
             stream.SendNext(this.Hp);
-            //stream.SendNext(this.Horizontal);
             //stream.SendNext(this.Vertical);
 
         }
@@ -69,7 +69,6 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
             // Network player, receive data
             this.UserId = (string)stream.ReceiveNext();
             this.Hp = (float)stream.ReceiveNext();
-            //this.Horizontal = (float)stream.ReceiveNext();
             //this.Vertical = (float)stream.ReceiveNext();
         }
     }

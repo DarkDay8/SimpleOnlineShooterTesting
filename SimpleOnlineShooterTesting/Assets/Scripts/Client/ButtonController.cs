@@ -19,8 +19,11 @@ public class ButtonController : MonoBehaviourPunCallbacks
 
     public void SetMoveAxes(PlayerControlStatus pc )
     {
-        string id = PhotonNetwork.LocalPlayer.UserId;
         pc.Horizontal = Input.GetAxis("Horizontal");
         pc.Vertical = Input.GetAxis("Vertical");
+    }
+    public void SetAtherAxes(PlayerControlStatus pc)
+    {
+        pc.Fire1 = Input.GetAxis("Fire1");
     }
 }

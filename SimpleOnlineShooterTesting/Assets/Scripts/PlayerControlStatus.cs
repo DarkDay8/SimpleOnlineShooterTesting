@@ -14,6 +14,8 @@ public class PlayerControlStatus : MonoBehaviourPun, IPunObservable
     public float RotAroundX;
     [SerializeField]
     public float RotAroundY;
+    [SerializeField]
+    public float Fire1;
 
     public void SetUsedId(string id)
     {
@@ -33,6 +35,7 @@ public class PlayerControlStatus : MonoBehaviourPun, IPunObservable
             stream.SendNext(this.Vertical);
             stream.SendNext(this.RotAroundX);
             stream.SendNext(this.RotAroundY);
+            stream.SendNext(this.Fire1);
         }
         else
         {
@@ -41,6 +44,7 @@ public class PlayerControlStatus : MonoBehaviourPun, IPunObservable
             this.Vertical = (float)stream.ReceiveNext();
             this.RotAroundX = (float)stream.ReceiveNext();
             this.RotAroundY = (float)stream.ReceiveNext();
+            this.Fire1 = (float)stream.ReceiveNext();
         }
     }
 

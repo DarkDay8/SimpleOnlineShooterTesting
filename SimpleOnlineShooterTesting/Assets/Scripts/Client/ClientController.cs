@@ -53,6 +53,7 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
                 SendAnswer();
                 cameraController.SetCamera(players[i]);
                 updateEvent.AddListener(buttonController.SetMoveAxes);
+                updateEvent.AddListener(buttonController.SetAtherAxes);
                 updateEvent.AddListener(cameraController.SetRotation);
                 return;
             }

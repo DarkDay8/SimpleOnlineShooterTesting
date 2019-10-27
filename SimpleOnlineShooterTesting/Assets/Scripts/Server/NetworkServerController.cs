@@ -61,6 +61,7 @@ public class NetworkServerController : MonoBehaviourPunCallbacks
         myPlayer.playerStatus = pl.GetComponent<PlayerStatus>();
         myPlayer.transform = pl.transform;
         myPlayer.playerStatus.SetUsedId(player.UserId);
+        myPlayer.playerStatus.Weapon = new Bow("bow1");
         playerListEntries.Add(player.UserId, myPlayer);
         object[] content = new object[] { player.UserId };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };

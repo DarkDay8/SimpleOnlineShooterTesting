@@ -2292,6 +2292,7 @@ GameObject:
   - component: {fileID: 1771358741}
   - component: {fileID: 1771358743}
   - component: {fileID: 1771358745}
+  - component: {fileID: 1771358746}
   - component: {fileID: 1771358744}
   m_Layer: 0
   m_Name: Controllers
@@ -2369,3 +2370,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   network: {fileID: 1771358741}
   speed: 5
+--- !u!114 &1771358746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771358740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e0b7cc373904246acc3a67cedb77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  network: {fileID: 1771358741}
+  weaponUp: 1.5

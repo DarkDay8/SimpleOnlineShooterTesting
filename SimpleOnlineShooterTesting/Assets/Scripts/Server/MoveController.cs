@@ -9,7 +9,6 @@ public class MoveController : MonoBehaviourPunCallbacks
     private NetworkServerController network;
     [SerializeField]
     private float speed;
-    private List<PlayerControlStatus> controlStatuses;
 
     private void FixedUpdate()
     {
