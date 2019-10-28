@@ -13,8 +13,9 @@ public class Bow : BaseWeapon
         reload = 3;
     }
 
-    public override void Fire(Vector3 position, Quaternion rotation)
+    public override void Fire(Vector3 position, Vector3 forvard, string id)
     {
-        PhotonNetwork.Instantiate(bulletName, position, rotation);
+        GameObject buller = PhotonNetwork.Instantiate(bulletName, position, Quaternion.identity);
+        buller.GetComponent<Arrow>()?.Fly(forvard, id);
     }
 }

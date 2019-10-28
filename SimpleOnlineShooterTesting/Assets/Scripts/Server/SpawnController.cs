@@ -44,7 +44,7 @@ public class SpawnController : MonoBehaviourPunCallbacks
         player.transform = pl.transform;
 
         player.playerStatus.SetUsedId(player.id);
-        player.playerStatus.Weapon = new Launcher("Launcher1");
+        player.playerStatus.Weapon = new Pistol("Launcher1");
         return player;
     }
     void SendReSpawnMessage(MyPlayer player)

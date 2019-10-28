@@ -25,10 +25,11 @@ public class WeaponController : MonoBehaviourPun
     }
     public void Fire(MyPlayer player)
     {
-        player.playerStatus.Weapon.Fire(
-            player.playerStatus.transform.position + Vector3.up * weaponUp + player.playerStatus.transform.TransformDirection(Vector3.forward),//TransformDirection(Vector3.forward * 2),
-            Quaternion.Euler(-player.controlStatus.RotAroundX, player.controlStatus.RotAroundY, 0));
         player.playerStatus.Reload = player.playerStatus.Weapon.reload;
+        player.playerStatus.Weapon.Fire(player.controlStatus.CameraPosition, player.controlStatus.CameraForward, player.id);
+//            player.playerStatus.transform.position + Vector3.up * weaponUp + player.playerStatus.transform.TransformDirection(Vector3.forward),
+//           Quaternion.Euler(-player.controlStatus.RotAroundX, player.controlStatus.RotAroundY, 0));
+        
     }
 }
  

@@ -12,5 +12,5 @@ public abstract class BaseWeapon
     {
         this.Id = id;
     }
-    public abstract void Fire(Vector3 position, Quaternion rotation);
+    public abstract void Fire(Vector3 position, Vector3 forward, string id);
 }

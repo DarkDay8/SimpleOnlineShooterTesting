@@ -13,8 +13,9 @@ public class Launcher : BaseWeapon
         reload = 7;
     }
 
-    public override void Fire(Vector3 position, Quaternion rotation)
+    public override void Fire(Vector3 position, Vector3 forward, string id)
     {
-        PhotonNetwork.Instantiate(bulletName, position, rotation);
+        GameObject buller = PhotonNetwork.Instantiate(bulletName, position, Quaternion.identity);
+        buller.GetComponent<Grenade>()?.Fly(forward, id);
     }
 }

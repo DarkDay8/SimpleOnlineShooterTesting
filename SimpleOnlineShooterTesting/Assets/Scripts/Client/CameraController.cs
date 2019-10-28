@@ -56,5 +56,7 @@ public class CameraController : MonoBehaviour
     {
         pc.RotAroundX = rotAroundX;
         pc.RotAroundY = rotAroundY;
+        pc.CameraPosition = camera.transform.position;
+        pc.CameraForward = camera.transform.forward;
     }
 }

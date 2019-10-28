@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviourPun
+public class Arrow : MonoBehaviourPun, IBullet
 {
     [SerializeField]
     private float speed;
     [SerializeField]
     private float timeToLife;
     private Rigidbody rb;
+    private string id;
 
     public void Start()
     {
         Debug.Log(transform.position);
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.TransformDirection(Vector3.forward * speed);
+        //rb.velocity = transform.TransformDirection(Vector3.forward * speed);
     }
     private void FixedUpdate()
     {
@@ -26,6 +27,11 @@ public class Arrow : MonoBehaviourPun
         else
             PhotonNetwork.Destroy(this.gameObject);
     }
+    public void Fly(Vector3 forward, string id)
+    {
+        this.id = id;
+        GetComponent<Rigidbody>().velocity = transform.TransformDirection(forward * speed);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision ArrowDestroy");
@@ -33,8 +39,13 @@ public class Arrow : MonoBehaviourPun
     }
     private void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log("Trigger ArrowDestroy");
+        if (id == other.transform.GetComponent<PlayerLifeController>()?.GetId())
+            return;
         PhotonNetwork.Destroy(this.gameObject);
+    }
+
+    public string GetId()
+    {
+        return id;
     }
 }
