@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 316937266}
   - component: {fileID: 316937269}
   - component: {fileID: 316937270}
+  - component: {fileID: 316937271}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -479,6 +480,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &316937271
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316937264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &321209911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1226,7 @@ GameObject:
   - component: {fileID: 725923758}
   - component: {fileID: 725923762}
   - component: {fileID: 725923761}
+  - component: {fileID: 725923763}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1337,6 +1352,19 @@ MonoBehaviour:
   viewIdField: 6
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!135 &725923763
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725923756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &761102088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,6 +2263,7 @@ GameObject:
   - component: {fileID: 1225051684}
   - component: {fileID: 1225051687}
   - component: {fileID: 1225051688}
+  - component: {fileID: 1225051689}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -2360,6 +2389,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &1225051689
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225051682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1272192338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2416,7 @@ GameObject:
   - component: {fileID: 1272192340}
   - component: {fileID: 1272192343}
   - component: {fileID: 1272192344}
+  - component: {fileID: 1272192345}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -2499,6 +2542,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &1272192345
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272192338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1279664081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,6 +2937,7 @@ GameObject:
   - component: {fileID: 1475820789}
   - component: {fileID: 1475820792}
   - component: {fileID: 1475820793}
+  - component: {fileID: 1475820794}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -3006,6 +3063,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &1475820794
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475820787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1515224844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,6 +3880,7 @@ GameObject:
   - component: {fileID: 1844783364}
   - component: {fileID: 1844783367}
   - component: {fileID: 1844783368}
+  - component: {fileID: 1844783369}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -3935,6 +4006,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &1844783369
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844783362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2072648214
 GameObject:
   m_ObjectHideFlags: 0

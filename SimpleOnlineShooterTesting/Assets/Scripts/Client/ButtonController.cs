@@ -25,5 +25,6 @@ public class ButtonController : MonoBehaviourPunCallbacks
     public void SetAtherAxes(PlayerControlStatus pc)
     {
         pc.Fire1 = Input.GetAxis("Fire1");
+        pc.Fire2 = Input.GetAxis("Fire2");
     }
 }

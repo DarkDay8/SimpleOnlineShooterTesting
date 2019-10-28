@@ -35,26 +35,25 @@ public class WeaponController : MonoBehaviourPun
                 weapon.UseMatrial();
             }
         }
-
     }
-    public void ChangeWeapon(string id, WeaponBox newWeapon)
+    public void TakeWeapon(string id, WeaponBox newWeapon)
     {
-        for (int i = 0; i < weapons.Count; i++)
+        foreach (WeaponBox weapon in weapons)
         {
-            if (weapons[i].playerId == id)
+            if (weapon.weapon.Id == newWeapon.weapon.Id)
             {
-                BaseWeapon weapon = weapons[i].weapon;
-                weapons[i].weapon = newWeapon.weapon;
-                newWeapon.weapon = weapon;
-                newWeapon.playerId = id;
-                newWeapon.isBusy = true;
-                weapons[i].playerId = "";
-                weapons[i].isBusy = false;
-                weapons[i].UseMatrial();
-                newWeapon.UseMatrial();
+                weapon.playerId = id;
+                weapon.isBusy = true;
                 updateWeaponBoxMessage();
+                weapon.UseMatrial();
             }
         }
+    }
+    public  void ChangeWeapon(string id, WeaponBox newWeapon)
+    {
+        FreeWeapon(id);
+        TakeWeapon(id, newWeapon);
+       
     }
 
     public WeaponBox GetRandomWeapon()
@@ -78,10 +77,43 @@ public class WeaponController : MonoBehaviourPun
                     item.Value.playerStatus.Reload -= Time.fixedDeltaTime;
                 else if (item.Value.controlStatus?.Fire1 > 0)
                     Fire(item.Value);
+                if (item.Value.controlStatus?.Fire2 > 0)
+                {
+                    Change(item.Value);
+                }
             }
         }
     }
-    public void Fire(MyPlayer player)
+    private void Change(MyPlayer player)
+    {
+        float range = 1f;
+        RaycastHit[] hits = Physics.SphereCastAll(player.controlStatus.CameraPosition, range, player.controlStatus.CameraForward, range);
+        Debug.Log("hits " + hits);
+        foreach (var item in hits)
+        {
+            WeaponBox wb = item.transform.GetComponent<WeaponBox>();
+            Debug.Log("wb " + wb);
+            if (wb != null)
+            {
+                ChangeWeapon(player.id, wb);
+                player.playerStatus.Weapon = wb.weapon;
+                return;
+            }
+        }
+
+        //RaycastHit hit;
+        //if (Physics.Raycast(player.controlStatus.CameraPosition, player.controlStatus.CameraForward, out hit, range))
+        //{
+        //    WeaponBox wb = hit.transform.GetComponent<WeaponBox>();
+        //    if (wb != null)
+        //    {
+        //        ChangeWeapon(player.id, wb);
+        //        player.playerStatus.Weapon = wb.weapon;
+        //    }
+        //}
+    }
+
+    private void Fire(MyPlayer player)
     {
         player.playerStatus.Reload = player.playerStatus.Weapon.reload;
         player.playerStatus.Weapon.Fire(player.controlStatus.CameraPosition,

@@ -72,5 +72,6 @@ MonoBehaviour:
   RotAroundX: 0
   RotAroundY: 0
   Fire1: 0
+  Fire2: 0
   CameraPosition: {x: 0, y: 0, z: 0}
   CameraForward: {x: 0, y: 0, z: 0}

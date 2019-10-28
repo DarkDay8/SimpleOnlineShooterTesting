@@ -66,7 +66,7 @@ public class MyServerController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public void ChangeBoxMaterialMassage()
     {
-
+        Debug.Log("Seng Massage to Change box material");
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
         SendOptions sendOptions = new SendOptions { Reliability = true };
         PhotonNetwork.RaiseEvent((byte)GameEvent.ChangeBoxMaterial, null, raiseEventOptions, sendOptions);
