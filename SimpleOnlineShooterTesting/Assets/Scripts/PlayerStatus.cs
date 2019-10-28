@@ -11,10 +11,10 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
     float Hp;
     [SerializeField]
     public BaseWeapon Weapon;
-    //[SerializeField]
-    //float Vertical;
+    [SerializeField]
     public float Reload { set; get; }
-
+    [SerializeField]
+    public string WeaponName;
     public void SetUsedId(string id)
     {
         if(PhotonNetwork.IsMasterClient)
@@ -61,7 +61,8 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
             // We own this player: send the others our data
             stream.SendNext(this.UserId);
             stream.SendNext(this.Hp);
-            //stream.SendNext(this.Vertical);
+            stream.SendNext(this.Reload);
+            stream.SendNext(this.WeaponName);
 
         }
         else
@@ -69,7 +70,8 @@ public class PlayerStatus : MonoBehaviourPun, IPunObservable
             // Network player, receive data
             this.UserId = (string)stream.ReceiveNext();
             this.Hp = (float)stream.ReceiveNext();
-            //this.Vertical = (float)stream.ReceiveNext();
+            this.Reload = (float)stream.ReceiveNext();
+            this.WeaponName = (string)stream.ReceiveNext();
         }
     }
 

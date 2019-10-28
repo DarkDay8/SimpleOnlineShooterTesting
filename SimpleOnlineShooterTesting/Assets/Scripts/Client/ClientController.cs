@@ -19,6 +19,8 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
     private NetworkClientController networkController;
     [SerializeField]
     private CameraController cameraController;
+    [SerializeField]
+    private GUIController guiController;
 
     private PlayerStatus playerStatus;
     private PlayerControlStatus playerControl;
@@ -68,6 +70,7 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
             if (players[i].IsMine(PhotonNetwork.LocalPlayer.UserId))
             {
                 cameraController.SetCamera(players[i]);
+                guiController.SetPlayerStatus(players[i]);
                 return;
             }
         }
@@ -90,6 +93,7 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
                 playerControl.SetUsedId(PhotonNetwork.LocalPlayer.UserId);
                 SendAnswer();
                 cameraController.SetCamera(players[i]);
+                guiController.SetPlayerStatus(players[i]);
                 updateEvent.AddListener(buttonController.SetMoveAxes);
                 updateEvent.AddListener(buttonController.SetAtherAxes);
                 updateEvent.AddListener(cameraController.SetRotation);

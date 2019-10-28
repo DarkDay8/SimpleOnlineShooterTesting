@@ -40,7 +40,7 @@ public class WeaponController : MonoBehaviourPun
     {
         foreach (WeaponBox weapon in weapons)
         {
-            if (weapon.weapon.Id == newWeapon.weapon.Id)
+            if (weapon.weapon.Id.Equals(newWeapon.weapon.Id))
             {
                 weapon.playerId = id;
                 weapon.isBusy = true;
@@ -96,21 +96,11 @@ public class WeaponController : MonoBehaviourPun
             if (wb != null)
             {
                 ChangeWeapon(player.id, wb);
+                player.playerStatus.WeaponName = wb.weapon.Title;
                 player.playerStatus.Weapon = wb.weapon;
                 return;
             }
         }
-
-        //RaycastHit hit;
-        //if (Physics.Raycast(player.controlStatus.CameraPosition, player.controlStatus.CameraForward, out hit, range))
-        //{
-        //    WeaponBox wb = hit.transform.GetComponent<WeaponBox>();
-        //    if (wb != null)
-        //    {
-        //        ChangeWeapon(player.id, wb);
-        //        player.playerStatus.Weapon = wb.weapon;
-        //    }
-        //}
     }
 
     private void Fire(MyPlayer player)

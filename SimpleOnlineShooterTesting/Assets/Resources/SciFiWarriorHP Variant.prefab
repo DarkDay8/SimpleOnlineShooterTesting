@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UserId: 
   Hp: 0
+  WeaponName: 
 --- !u!1001 &6397169945554218051
 PrefabInstance:
   m_ObjectHideFlags: 0

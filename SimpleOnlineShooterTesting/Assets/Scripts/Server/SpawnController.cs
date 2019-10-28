@@ -56,6 +56,7 @@ public class SpawnController : MonoBehaviourPunCallbacks
         wb.playerId = player.id;
         wb.isBusy = true;
         player.playerStatus.Weapon =  wb.weapon;
+        player.playerStatus.WeaponName = wb.weapon.Title;
         updateWeaponBoxMessage();
         wb.UseMatrial();
         return player;
