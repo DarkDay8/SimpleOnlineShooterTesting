@@ -13,6 +13,8 @@ public class MyServerController : MonoBehaviourPunCallbacks, IOnEventCallback
     private SpawnController spawnController;
     [SerializeField]
     private NetworkServerController networkController;
+    [SerializeField]
+    private WeaponController weaponController;
 
     private List<string> idList = new List<string>();
 
@@ -47,19 +49,26 @@ public class MyServerController : MonoBehaviourPunCallbacks, IOnEventCallback
             if (controls[i].GetUsedId().Equals(id))
             {
                 networkController.GetPlayer(id).controlStatus = controls[i];
-                //MyPlayer player = networkController.GetPlayer(id);
-                //controls[i].transform.SetParent(player.playerStatus.transform);
-                //controls[i].transform.localPosition = new Vector3(0, 2, 0);
-                //player.controlStatus = controls[i];
                 idList.RemoveAt(0);
                 return;
             }
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         networkController.spawnPlayer = spawnController.InstantiatePlayer;
+        spawnController.getWeapon = weaponController.GetRandomWeapon;
+        spawnController.freeWeapon = weaponController.FreeWeapon;
+        spawnController.updateWeaponBoxMessage = ChangeBoxMaterialMassage;
+        weaponController.updateWeaponBoxMessage = ChangeBoxMaterialMassage;
     }
 
+    public void ChangeBoxMaterialMassage()
+    {
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        PhotonNetwork.RaiseEvent((byte)GameEvent.ChangeBoxMaterial, null, raiseEventOptions, sendOptions);
+    }
 }

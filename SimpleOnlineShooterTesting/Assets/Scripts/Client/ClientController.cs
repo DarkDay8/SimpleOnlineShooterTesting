@@ -23,6 +23,13 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
     private PlayerStatus playerStatus;
     private PlayerControlStatus playerControl;
     private PlayerStatusEvent updateEvent = new PlayerStatusEvent();
+    private List<WeaponBox> weaponBoxes;
+
+    private void Start()
+    {
+        if (weaponBoxes == null)
+            weaponBoxes = new List<WeaponBox>(FindObjectsOfType<WeaponBox>());
+    }
 
     public void OnEvent(EventData photonEvent)
     {
@@ -39,6 +46,9 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
                 case (byte)GameEvent.ReSpawn:
                     if (((string)data[0]).Equals(PhotonNetwork.LocalPlayer.UserId))
                         Invoke("ReSpawn", 0.1f);
+                    break;
+                case (byte)GameEvent.ChangeBoxMaterial:
+                    Invoke("ChangeBoxMaterial", 0.1f);
                     break;
                 default:
                     break;
@@ -62,7 +72,11 @@ public class ClientController : MonoBehaviourPunCallbacks, IOnEventCallback
             }
         }
     }
-
+    private void ChangeBoxMaterial()
+    {
+        foreach (var item in weaponBoxes)
+            item.UseMatrial();
+    }
     private void BaseInst()
     {
         PlayerStatus[] players = GameObject.FindObjectsOfType<PlayerStatus>();

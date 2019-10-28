@@ -10,7 +10,7 @@ public class Launcher : BaseWeapon
     public Launcher(string id) : base(id)
     {
         Title = "Launcher";
-        reload = 7;
+        reload = 2;
     }
 
     public override void Fire(Vector3 position, Vector3 forward, string id)

@@ -7,7 +7,7 @@ public class Pistol : BaseWeapon
     public Pistol(string id) : base(id)
     {
         Title = "Pistol";
-        reload = 7;
+        reload = 4;
     }
 
     public override void Fire(Vector3 position, Vector3 forward, string id)

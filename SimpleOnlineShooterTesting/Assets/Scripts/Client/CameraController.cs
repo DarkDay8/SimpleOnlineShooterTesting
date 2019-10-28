@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Cursor.visible = false;
         rotAroundX = transform.eulerAngles.x;
         rotAroundY = transform.eulerAngles.y;
     }

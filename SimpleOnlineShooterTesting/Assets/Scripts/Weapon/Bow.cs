@@ -10,7 +10,7 @@ public class Bow : BaseWeapon
     public Bow(string id) : base(id)
     {
         Title = "Bow";
-        reload = 3;
+        reload = 1;
     }
 
     public override void Fire(Vector3 position, Vector3 forvard, string id)

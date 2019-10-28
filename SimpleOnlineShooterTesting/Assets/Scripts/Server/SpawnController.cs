@@ -14,6 +14,13 @@ public class SpawnController : MonoBehaviourPunCallbacks
     [SerializeField]
     private float respawnTime;
 
+    public delegate WeaponBox GetWeaponBox();
+    public GetWeaponBox getWeapon;
+    public delegate void FreeWeapon(string id);
+    public FreeWeapon freeWeapon;
+    public delegate void UpdateWeaponBoxMessage();
+    public UpdateWeaponBoxMessage updateWeaponBoxMessage;
+
     public MyPlayer InstantiatePlayer(string id)
     {
         MyPlayer myPlayer = new MyPlayer();
@@ -24,6 +31,7 @@ public class SpawnController : MonoBehaviourPunCallbacks
 
     private void ReSpawnPlayer(MyPlayer player)
     {
+        freeWeapon(player.id);
         StartCoroutine(ReSpawn(player, respawnTime));
     }
 
@@ -42,9 +50,14 @@ public class SpawnController : MonoBehaviourPunCallbacks
         pl.AddComponent<PlayerLifeController>().SetPlayer(player);
         player.playerStatus = pl.GetComponent<PlayerStatus>();
         player.transform = pl.transform;
-
         player.playerStatus.SetUsedId(player.id);
-        player.playerStatus.Weapon = new Pistol("Launcher1");
+
+        WeaponBox wb = getWeapon();
+        wb.playerId = player.id;
+        wb.isBusy = true;
+        player.playerStatus.Weapon =  wb.weapon;
+        updateWeaponBoxMessage();
+        wb.UseMatrial();
         return player;
     }
     void SendReSpawnMessage(MyPlayer player)
